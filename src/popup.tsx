@@ -1,11 +1,13 @@
-import { CountButton } from "~features/count-button"
-
+import { MemoryRouter } from "react-router-dom"
 import "~style.css"
+import { Routing } from "~features/index"
 
 function IndexPopup() {
   return (
-    <div className="plasmo-flex plasmo-items-center plasmo-justify-center plasmo-h-16 plasmo-w-40">
-      <CountButton />
+    <div className="plasmo-flex plasmo-flex-col plasmo-items-center plasmo-justify-center plasmo-h-full plasmo-w-[500px]">
+      <MemoryRouter>
+        <Routing />
+      </MemoryRouter>
     </div>
   )
 }
