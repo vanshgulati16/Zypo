@@ -120,6 +120,17 @@ export const PhotoEditor = () => {
         document.body.removeChild(a)
     }
 
+    const handleRemoveImage = () => {
+        setOriginalImage(null)
+        setEditedImage(null)
+        setPreviewImage(null)
+        setHasRemovedBg(false)
+        setBgColor('transparent')
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''
+        }
+    }
+
     return (
         <div className="plasmo-flex plasmo-flex-col plasmo-h-[600px] plasmo-w-full plasmo-bg-yellow-100">
             {/* Header */}
@@ -249,6 +260,30 @@ export const PhotoEditor = () => {
                                     alt="Preview"
                                     className="plasmo-w-full plasmo-h-full plasmo-object-contain"
                                 />
+                                {/* Remove Image Button */}
+                                <button
+                                    onClick={handleRemoveImage}
+                                    className="plasmo-absolute plasmo-top-2 plasmo-right-2 
+                                        plasmo-bg-red-500 plasmo-text-white
+                                        plasmo-w-8 plasmo-h-8 plasmo-rounded-lg
+                                        plasmo-border-2 plasmo-border-black
+                                        hover:plasmo-translate-x-0.5 hover:plasmo-translate-y-0.5
+                                        plasmo-shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
+                                        hover:plasmo-shadow-none plasmo-transition-all plasmo-duration-200
+                                        plasmo-flex plasmo-items-center plasmo-justify-center">
+                                    <svg 
+                                        className="plasmo-w-5 plasmo-h-5" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24">
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            strokeWidth={2} 
+                                            d="M6 18L18 6M6 6l12 12" 
+                                        />
+                                    </svg>
+                                </button>
                                 {isProcessing && (
                                     <div className="plasmo-absolute plasmo-inset-0 plasmo-flex 
                                         plasmo-items-center plasmo-justify-center plasmo-bg-black/50">

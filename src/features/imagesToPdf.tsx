@@ -167,7 +167,31 @@ export const ImagesToPdf = () => {
                                 />
                             </div>
 
-                            <div className="plasmo-grid plasmo-grid-cols-2 md:plasmo-grid-cols-3 plasmo-gap-4">
+                            <div className="plasmo-mt-6 plasmo-flex plasmo-justify-center">
+                                <button
+                                    onClick={createPdf}
+                                    disabled={isConverting}
+                                    className="plasmo-bg-green-400 plasmo-text-black plasmo-font-bold
+                                        plasmo-py-3 plasmo-px-8 plasmo-rounded-xl
+                                        plasmo-border-4 plasmo-border-black
+                                        hover:plasmo-translate-x-1 hover:plasmo-translate-y-1
+                                        plasmo-shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                                        hover:plasmo-shadow-none plasmo-transition-all plasmo-duration-200
+                                        disabled:plasmo-opacity-50 disabled:plasmo-cursor-not-allowed
+                                        disabled:plasmo-transform-none disabled:plasmo-shadow-none">
+                                    {isConverting ? (
+                                        <span className="plasmo-flex plasmo-items-center plasmo-gap-2">
+                                            <svg className="plasmo-animate-spin plasmo-h-5 plasmo-w-5" viewBox="0 0 24 24">
+                                                <circle className="plasmo-opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                                                <path className="plasmo-opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                                            </svg>
+                                            Creating PDF...
+                                        </span>
+                                    ) : 'Create PDF'}
+                                </button>
+                            </div>
+
+                            <div className="plasmo-grid plasmo-grid-cols-2 md:plasmo-grid-cols-3 plasmo-gap-4 plasmo-mt-6">
                                 {selectedImages.map((file, index) => (
                                     <div key={index} className="plasmo-relative plasmo-group">
                                         <div className="plasmo-aspect-w-1 plasmo-aspect-h-1 
@@ -196,30 +220,6 @@ export const ImagesToPdf = () => {
                                         </div>
                                     </div>
                                 ))}
-                            </div>
-
-                            <div className="plasmo-mt-6 plasmo-flex plasmo-justify-center">
-                                <button
-                                    onClick={createPdf}
-                                    disabled={isConverting}
-                                    className="plasmo-bg-green-400 plasmo-text-black plasmo-font-bold
-                                        plasmo-py-3 plasmo-px-8 plasmo-rounded-xl
-                                        plasmo-border-4 plasmo-border-black
-                                        hover:plasmo-translate-x-1 hover:plasmo-translate-y-1
-                                        plasmo-shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                                        hover:plasmo-shadow-none plasmo-transition-all plasmo-duration-200
-                                        disabled:plasmo-opacity-50 disabled:plasmo-cursor-not-allowed
-                                        disabled:plasmo-transform-none disabled:plasmo-shadow-none">
-                                    {isConverting ? (
-                                        <span className="plasmo-flex plasmo-items-center plasmo-gap-2">
-                                            <svg className="plasmo-animate-spin plasmo-h-5 plasmo-w-5" viewBox="0 0 24 24">
-                                                <circle className="plasmo-opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                                                <path className="plasmo-opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                                            </svg>
-                                            Creating PDF...
-                                        </span>
-                                    ) : 'Create PDF'}
-                                </button>
                             </div>
                         </div>
                     )}
